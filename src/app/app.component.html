@@ -1,20 +1,60 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<br>
 
+<div class="text-center">
+    <label class="btn btn-default">
+    Upload Image
+    <input type="file" hidden (change)="uploadFile($event)">
+  </label>
+</div>
+<br>
+<div class="container">
+
+    <div class="row">
+        <!-- <form (submit)="adddata($event)"> -->
+        <div class="col-md-4">
+            <label>Name</label>
+            <input type="text" [(ngModel)]="name" name="name" required>
+
+        </div>
+        <div class="col-md-4">
+            <label>Email</label>
+            <input type="email" [(ngModel)]="email" name="email" required>
+
+        </div>
+        <div class="col-md-4">
+            <!-- <input type="submit" value="add"> -->
+            <button *ngIf="added" class="btn btn-primary" (click)="adduserdata()">ADD</button>
+            <button *ngIf="edited" class="btn btn-primary" (click)="updateuserdata()">UPDATE</button>
+
+        </div>
+        <!-- </form> -->
+    </div>
+
+</div>
+
+<br><br>
+<hr>
+<div class=" container ">
+    <table class="table ">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Actioin</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let quoteGroup of quoteCollection2">
+                <td>{{quoteGroup.name}}</td>
+                <td>{{quoteGroup.email}}</td>
+                <td>
+                    <button type="button " class="btn btn-primary " (click)="updatedata(quoteGroup)">Edit</button>
+
+                    <button type="button " class="btn btn-danger " (click)="deletedata(quoteGroup)">Delete</button>
+
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
